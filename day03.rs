@@ -1,12 +1,7 @@
-use std::{
-    fs::File,
-    io::{prelude::*, BufReader},
-    path::Path,
-};
-
+pub mod read_data;
 
 fn main() {
-    let mut rows = get_data_from_file("./data_day03");
+    let mut rows = read_data::get_data_from_file("./data/data_day03");
     let one_down_slice: &mut [String] = &mut rows[1..];
     // Right 7 Down 1
     get_number_of_trees(one_down_slice, 3, 1);
@@ -34,13 +29,4 @@ fn get_number_of_trees(rows: &mut [String], right_step: usize, down_step: usize)
     }
     return number_trees
     
-}
-
-
-fn get_data_from_file(filename: impl AsRef<Path>) -> Vec<String> {
-    let file = File::open(filename).expect("File doesn't exist");
-    let buffer = BufReader::new(file);
-    buffer.lines()
-        .map(|l| l.expect("Error parsing row"))
-        .collect()
 }

@@ -21,7 +21,7 @@ def getAllVotesLetterTotal(reader):
                     valid += 1
     return valid
 
-with open('data_day06', 'r') as f:
+with open('./data/data_day06', 'r') as f:
     reader = f.readlines()
     data = [list(group) for item,group in groupby(reader, lambda string: string != "\n")]
     print(getUniqueLettersTotal(data))

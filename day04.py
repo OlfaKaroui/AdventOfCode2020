@@ -1,8 +1,6 @@
 from itertools import groupby
 import re
 
-# not a huge fan of this but 🤷‍♀️
-
 # byr (Birth Year)
 # iyr (Issue Year)
 # eyr (Expiration Year)
@@ -46,7 +44,7 @@ def verifyPassport(passport):
             isValidPid = bool(re.match(r"^(?:[0-9]{9})$", value))
     return isValidByr and isValidIyr and isValidEyr and isValidHgt and isValidHcl and isValidEcl and isValidPid
         
-with open('data_day04', 'r') as f:
+with open('./data/data_day04', 'r') as f:
     reader = f.readlines()
     data = [list(group) for item,group in groupby(reader, lambda string: string != "\n")]
     data = [' '.join(item).replace('\r', '').replace('\n', '') for item in data]
